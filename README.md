@@ -3,7 +3,7 @@
 [![LVM](https://img.shields.io/badge/Storage-LVM-blue?style=flat-square)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))
 
 > [!caution]
-> **⚠️ Attention : ces commandes ne sont pas sans risque et peuvent entraîner une perte de données. **
+> Attention : ces commandes ne sont pas sans risque et peuvent entraîner une **perte de données**.
 
 ## 📋 Description
 
