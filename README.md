@@ -2,6 +2,10 @@
 [![Proxmox](https://img.shields.io/badge/Proxmox-VE-orange?style=flat-square&logo=proxmox)](https://www.proxmox.com/)
 [![LVM](https://img.shields.io/badge/Storage-LVM-blue?style=flat-square)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))
 
+# 🧾 Informations
+
+* 🐧 Distribution : Debian 13 trixie
+
 > [!caution]
 > Ces commandes ne sont pas sans risque et **peuvent entraîner une perte de données**.  
 > Assurez-vous d’avoir sauvegardé vos fichiers importants avant de continuer.
