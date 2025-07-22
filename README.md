@@ -35,3 +35,6 @@ lvremove /dev/pve/data -y && lvremove /dev/pve/data_tdata -y && lvremove /dev/pv
 ```bash
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
+Exécutez d'abord la première pour nettoyer tous les volumes data, puis la deuxième pour donner tout l'espace libéré au volume root.
+
+Si la première commande donne des erreurs parce que certains volumes n'existent plus, c'est normal, continuez avec la deuxième commande.
