@@ -30,11 +30,9 @@ Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
 ```bash
 lvremove /dev/pve/data -y && lvremove /dev/pve/data_tdata -y && lvremove /dev/pve/data_tmeta -y
 ```
+> Si la première commande donne des erreurs parce que certains volumes n'existent plus, c'est normal, continuez avec la deuxième commande.
 
 ### Étape 2 : Récupération de l'espace
 ```bash
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
-Exécutez d'abord la première pour nettoyer tous les volumes data, puis la deuxième pour donner tout l'espace libéré au volume root.
-
-Si la première commande donne des erreurs parce que certains volumes n'existent plus, c'est normal, continuez avec la deuxième commande.
