@@ -1,6 +1,6 @@
 # 🚀 Proxmox Disk Merge
 
-> **Script optimisé pour récupérer 100% de l'espace disque dans Proxmox VE**
+> **Commande optimisé pour récupérer 100% de l'espace disque dans Proxmox VE**
 
 [![Proxmox](https://img.shields.io/badge/Proxmox-VE-orange?style=flat-square&logo=proxmox)](https://www.proxmox.com/)
 [![LVM](https://img.shields.io/badge/Storage-LVM-blue?style=flat-square)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))
