@@ -4,7 +4,7 @@
 
 # 🧾 Informations
 
-* 📦 Proxmox Version : 9.0.0
+* 📦 Proxmox : 9.0.0
 * 🐧 Distribution : Debian 13 trixie
 
 > [!caution]
