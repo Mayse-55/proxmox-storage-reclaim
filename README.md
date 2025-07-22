@@ -23,7 +23,7 @@ Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
 
 ---
 
-## 🚀 Installation rapide
+## 🚀 Récupération espace disque
 
 ### Étape 1 : Nettoyage des volumes LVM
 ```bash
