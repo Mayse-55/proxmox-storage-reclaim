@@ -67,5 +67,3 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 > [!important]
 > Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).
 
----
-
