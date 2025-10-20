@@ -31,13 +31,26 @@ Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
 
 ## 🚀 Récupération espace disque
 
-### Étape 1 : Nettoyage des volumes LVM
-```bash
-lvremove /dev/pve/data -y && lvremove /dev/pve/data_tdata -y && lvremove /dev/pve/data_tmeta -y
-```
-Si la première commande donne des **erreurs** parce que certains **volumes n'existent plus**, c'est normal, continuez avec la deuxième commande.
-
-### Étape 2 : Récupération de l'espace
+### Étape 1 : Récupération de l'espace
 ```bash
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
+
+### Étape 2 : Supprimer Local-lvm
+
+✅ 1. Ouvre le fichier de configuration :
+```bash
+nano /etc/pve/storage.cfg
+```
+✅ 2. Repère et supprime le bloc qui ressemble à :
+```bash
+lvmthin: local-lvm
+    thinpool data
+    vgname pve
+    content rootdir,images
+```
+
+Tu peux aussi le commenter avec # au début de chaque ligne si tu préfères temporairement le désactiver.
+
+[warning]
+⚠️ Attention à ne pas supprimer d'autres blocs comme celui de local, qui est souvent le stockage basé sur /var/lib/vz.
