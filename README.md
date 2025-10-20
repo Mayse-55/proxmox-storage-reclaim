@@ -65,5 +65,5 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
 Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
 
 > [!important]
-> Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).
+>** Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).**
 
