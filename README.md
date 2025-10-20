@@ -38,11 +38,11 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 
 ### Étape 2 : Supprimer Local-lvm
 
-✅ 1. Ouvre le fichier de configuration :
+1. Ouvre le fichier de configuration :
 ```bash
 nano /etc/pve/storage.cfg
 ```
-✅ 2. Repère et supprime le bloc qui ressemble à :
+2. Repère et supprime le bloc qui ressemble à :
 ```bash
 lvmthin: local-lvm
     thinpool data
@@ -51,6 +51,5 @@ lvmthin: local-lvm
 ```
 
 Tu peux aussi le commenter avec # au début de chaque ligne si tu préfères temporairement le désactiver.
-
 >[!caution]
 >⚠️ Attention à ne pas supprimer d'autres blocs comme celui de local, qui est souvent le stockage basé sur /var/lib/vz.
