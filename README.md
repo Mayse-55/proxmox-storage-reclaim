@@ -63,5 +63,5 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
    ```
 
 > [!important]
-> ❌ **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).**
+> ❌ **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
 
