@@ -41,7 +41,7 @@ Exécute la commande suivante pour allouer **tout l’espace libre** du volume g
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
 
-> 📝 Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs`.
+📝 Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs`.
 
 ---
 
@@ -62,7 +62,7 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
        content rootdir,images
    ```
 
-> 💡 Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
+💡 Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
 
 > ⚠️ **Attention**
 > Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).
