@@ -52,5 +52,5 @@ lvmthin: local-lvm
 
 Tu peux aussi le commenter avec # au début de chaque ligne si tu préfères temporairement le désactiver.
 
-[warning]
-⚠️ Attention à ne pas supprimer d'autres blocs comme celui de local, qui est souvent le stockage basé sur /var/lib/vz.
+>[!caution]
+>⚠️ Attention à ne pas supprimer d'autres blocs comme celui de local, qui est souvent le stockage basé sur /var/lib/vz.
