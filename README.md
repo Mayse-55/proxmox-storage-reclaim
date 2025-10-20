@@ -27,29 +27,45 @@ Avant : 83 Go utilisables / 256 Go total (67% d'espace perdu)
 Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
 ```
 
+Très bien, voici une version **plus propre et lisible** de ton bloc, prête à être publiée sur GitHub en Markdown. J'ai aussi corrigé quelques points de forme et de style :
+
 ---
 
-## 🚀 Récupération espace disque
+## 🚀 Récupération de l’espace disque dans Proxmox
 
-### Étape 1 : Récupération de l'espace
+### 🧩 Étape 1 : Étendre le volume `root` avec l’espace libéré
+
+Exécute la commande suivante pour allouer **tout l’espace libre** du volume group (`pve`) à la partition `root`, puis redimensionne le système de fichiers :
+
 ```bash
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
 
-### Étape 2 : Supprimer Local-lvm
+> 📝 Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs`.
 
-1. Ouvre le fichier de configuration :
-```bash
-nano /etc/pve/storage.cfg
-```
-2. Repère et supprime le bloc qui ressemble à :
-```bash
-lvmthin: local-lvm
-    thinpool data
-    vgname pve
-    content rootdir,images
-```
+---
 
-Tu peux aussi le commenter avec # au début de chaque ligne si tu préfères temporairement le désactiver.
->[!caution]
->⚠️ Attention à ne pas supprimer d'autres blocs comme celui de local, qui est souvent le stockage basé sur /var/lib/vz.
+### 🧹 Étape 2 : Supprimer `local-lvm` de la configuration Proxmox
+
+1. Éditez le fichier de configuration des stockages :
+
+   ```bash
+   nano /etc/pve/storage.cfg
+   ```
+
+2. Recherchez et supprimez le bloc suivant :
+
+   ```ini
+   lvmthin: local-lvm
+       thinpool data
+       vgname pve
+       content rootdir,images
+   ```
+
+> 💡 Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
+
+> ⚠️ **Attention**
+> Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).
+
+---
+
