@@ -64,7 +64,7 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 
 💡 Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
 
-> ⚠️ **Attention**
+> [!important]
 > Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).
 
 ---
