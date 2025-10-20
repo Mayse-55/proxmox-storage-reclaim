@@ -53,7 +53,7 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
    nano /etc/pve/storage.cfg
    ```
 
-2. Recherchez et supprimez le bloc suivant :
+2. Recherchez et supprimez le bloc suivant ou désactiver avec `#` :
 
    ```ini
    lvmthin: local-lvm
@@ -61,8 +61,6 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
        vgname pve
        content rootdir,images
    ```
-
-Vous pouvez également commenter chaque ligne en ajoutant `#` au début si vous souhaitez le désactiver temporairement.
 
 > [!important]
 > **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal (`/var/lib/vz`).**
