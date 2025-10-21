@@ -62,5 +62,5 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
        content rootdir,images
    ```
 
-⚠️**Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
+❌​​**Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
 
