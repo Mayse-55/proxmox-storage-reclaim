@@ -31,30 +31,30 @@ Très bien, voici une version **plus propre et lisible** de ton bloc, prête à 
 
 ---
 
-## 🚀 Récupération de l’espace disque dans Proxmox
+# 🚀 Récupération de l'espace disque dans Proxmox
 
-### 🧩 Étape 1 : Étendre le volume `root` avec l’espace libéré
+## 📋 Étapes pour Proxmox 8
 
-Exécute la commande suivante pour allouer **tout l’espace libre** du volume group (`pve`) à la partition `root`, puis redimensionne le système de fichiers :
+### 🧩 Étape 1 : Supprimer le thin pool `data`
+Supprimez le volume logique `data` pour libérer l'espace :
+```bash
+lvremove /dev/pve/data
+```
+⚠️ **Attention** : Cette commande supprime définitivement le thin pool. Assurez-vous qu'aucune VM ou container ne l'utilise.
 
+### 🔧 Étape 2 : Étendre le volume `root` avec l'espace libéré
+Allouez **tout l'espace libre** du volume group (`pve`) à la partition `root`, puis redimensionnez le système de fichiers :
 ```bash
 lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 ```
+💡 **Note** : Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs /dev/pve/root`.
 
-Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs`.
-
----
-
-### 🧹 Étape 2 : Supprimer `local-lvm` de la configuration Proxmox
-
+### 🧹 Étape 3 : Supprimer `local-lvm` de la configuration Proxmox
 1. Éditez le fichier de configuration des stockages :
-
    ```bash
    nano /etc/pve/storage.cfg
    ```
-
-2. Recherchez et supprimez le bloc suivant ou désactiver avec `#` :
-
+2. Recherchez et supprimez le bloc suivant ou désactivez-le avec `#` :
    ```ini
    lvmthin: local-lvm
        thinpool data
@@ -62,5 +62,30 @@ Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vo
        content rootdir,images
    ```
 
-❌ ​​**Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
+❌ **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
 
+---
+
+## 📋 Étapes pour Proxmox 9
+
+### 🧩 Étape 1 : Étendre le volume `root` avec l'espace libéré
+Allouez **tout l'espace libre** du volume group (`pve`) à la partition `root`, puis redimensionnez le système de fichiers :
+```bash
+lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
+```
+💡 **Note** : Cette commande suppose que vous utilisez un système de fichiers **ext4**. Si vous utilisez **xfs**, remplacez `resize2fs` par `xfs_growfs /dev/pve/root`.
+
+### 🧹 Étape 2 : Supprimer `local-lvm` de la configuration Proxmox
+1. Éditez le fichier de configuration des stockages :
+   ```bash
+   nano /etc/pve/storage.cfg
+   ```
+2. Recherchez et supprimez le bloc suivant ou désactivez-le avec `#` :
+   ```ini
+   lvmthin: local-lvm
+       thinpool data
+       vgname pve
+       content rootdir,images
+   ```
+
+❌ **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
