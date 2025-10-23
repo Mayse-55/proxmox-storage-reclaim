@@ -50,18 +50,12 @@ Disque total : 256 Go
 - ✅ **Backups possibles** : assez d'espace pour sauvegarder vos VMs
 - ✅ **Plus simple** : un seul espace de stockage à gérer
 
-### 📈 Comparaison visuelle
+### 📈 Comparaison
 
-**Avant :**
-```
-Backups : ████░░░░░░░░░░░░░░░░ 83 Go  ⚠️ Insuffisant
-VMs     : ████████████░░░░░░░░ 173 Go ✅ Beaucoup
-```
-
-**Après :**
-```
-Tout    : ████████████████████ 248 Go ✅ Flexible et suffisant
-```
+| Configuration | Backups/ISOs | VMs/Containers | Total utilisable |
+|---------------|--------------|----------------|------------------|
+| **Avant** ⚠️ | 83 Go (32%) | 173 Go (68%) | 256 Go cloisonné |
+| **Après** ✅ | ← 248 Go flexibles → | | 248 Go unifié |
 
 ### 💡 Pourquoi cette configuration est meilleure ?
 
