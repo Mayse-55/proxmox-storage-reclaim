@@ -51,13 +51,16 @@ Disque total : 256 Go
 - ✅ **Plus simple** : un seul espace de stockage à gérer
 
 ### 📈 Comparaison visuelle
-```
-Avant :
-  Backups : [████░░░░░░░░░░░░░░░] 83 Go  ⚠️ Insuffisant
-  VMs     : [████████████░░░░░░░░] 173 Go ✅ Beaucoup
 
-Après :  
-  Tout    : [████████████████████] 248 Go ✅ Flexible et suffisant
+**Avant :**
+```
+Backups : ████░░░░░░░░░░░░░░░░ 83 Go  ⚠️ Insuffisant
+VMs     : ████████████░░░░░░░░ 173 Go ✅ Beaucoup
+```
+
+**Après :**
+```
+Tout    : ████████████████████ 248 Go ✅ Flexible et suffisant
 ```
 
 ### 💡 Pourquoi cette configuration est meilleure ?
@@ -66,6 +69,7 @@ La configuration par défaut sépare rigidement l'espace :
 - Si vos VMs n'utilisent que 50 Go, les 123 Go restants de `local-lvm` sont inutilisables pour les backups
 - Si vous voulez faire des backups, vous êtes limité à 83 Go même si `local-lvm` a de l'espace libre
 
+En fusionnant tout dans `local`, **l'espace s'adapte automatiquement !**
 ---
 
 # 🚀 Récupération de l'espace disque dans Proxmox
