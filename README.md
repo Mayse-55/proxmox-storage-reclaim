@@ -89,24 +89,9 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
 
 ---
 
-
 ## 📦 Étape importante : Configurer le stockage `local`
 
 ⚠️ **N'oubliez pas** de mettre à jour la configuration du stockage `local` pour qu'il puisse gérer tous les types de contenu qui étaient auparavant dans `local-lvm`.
-
-### 🔧 Configuration manuelle
-
-1. Éditez à nouveau le fichier de configuration :
-   ```bash
-   nano /etc/pve/storage.cfg
-   ```
-
-2. Modifiez la section `dir: local` pour ajouter tout le contenu qui était dans `local-lvm` :
-   ```ini
-   dir: local
-       path /var/lib/vz
-       content iso,vztmpl,backup,rootdir,images
-   ```
 
 ### 🖱️ Configuration via l'interface web
 
