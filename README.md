@@ -9,7 +9,7 @@
 
 > [!caution]
 > Ces commandes ne sont pas sans risque et **peuvent entraîner une perte de données**.  
-> Assurez-vous d’avoir sauvegardé vos (VM, LXC, ect...) importants avant de continuer.
+> Assurez-vous d’avoir **sauvegardé** vos **(VM, LXC, ect...)** importants avant de continuer.
 
 ## 📋 Description
 Ce guide permet de **récupérer l'espace disque inutilisé** dans Proxmox VE en supprimant le stockage `local-lvm` et en étendant le volume `root`. Résout le problème du cloisonnement entre l'espace VMs et l'espace backups.
