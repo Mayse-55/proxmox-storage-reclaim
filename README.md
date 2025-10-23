@@ -21,11 +21,51 @@ Ce script permet de **fusionner et optimiser l'espace disque** dans Proxmox VE e
 - ⚡ **Consolidation** sur un seul volume unifié
 - 🔧 **Simple** : seulement 2 commandes à exécuter
 
-### 📊 Exemple concret
+## 📊 Exemple concret de récupération d'espace
+
+### Situation de départ
 ```
-Avant : 83 Go utilisables / 256 Go total (67% d'espace perdu)
-Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
+Disque total : 256 Go
+├── local (root)    : 83 Go   → ISOs, templates, backups
+└── local-lvm (data): 173 Go  → Disques VMs et containers
 ```
+
+### ⚠️ Le problème
+
+Avec cette configuration par défaut :
+- **173 Go** sont alloués pour les VMs et containers dans `local-lvm`
+- **Seulement 83 Go** pour les backups, ISOs et templates dans `local`
+
+**Conséquence** : Si vous avez des VMs qui utilisent 100 Go, vous ne pourrez stocker qu'un seul backup complet (voire aucun si vous avez plusieurs VMs) ! L'espace pour les backups est **largement insuffisant** par rapport à l'espace disponible pour les VMs.
+
+### Après la manipulation
+```
+Disque total : 256 Go
+└── local (root)    : 248 Go  → Tout (VMs, containers, backups, ISOs, templates)
+    (8 Go réservés pour le système)
+```
+
+**Avantages** :
+- ✅ **248 Go flexibles** : l'espace s'adapte automatiquement à vos besoins
+- ✅ **Backups possibles** : assez d'espace pour sauvegarder vos VMs
+- ✅ **Plus simple** : un seul espace de stockage à gérer
+
+### 📈 Comparaison visuelle
+```
+Avant :  
+  Backups : [████░░░░░░░░░░░░░░░░] 83 Go  ⚠️ Insuffisant
+  VMs     : [████████████░░░░░░░░] 173 Go ✅ Beaucoup
+
+Après :  
+  Tout    : [████████████████████] 248 Go ✅ Flexible et suffisant
+```
+
+### 💡 Pourquoi cette configuration est meilleure ?
+
+La configuration par défaut sépare rigidement l'espace :
+- Si vos VMs n'utilisent que 50 Go, les 123 Go restants de `local-lvm` sont inutilisables pour les backups
+- Si vous voulez faire des backups, vous êtes limité à 83 Go même si `local-lvm` a de l'espace libre
+
 ---
 
 # 🚀 Récupération de l'espace disque dans Proxmox
