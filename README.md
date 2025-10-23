@@ -12,14 +12,7 @@
 > Assurez-vous d’avoir sauvegardé vos fichiers importants avant de continuer.
 
 ## 📋 Description
-
-Ce script permet de **fusionner et optimiser l'espace disque** dans Proxmox VE en supprimant les volumes LVM fragmentés et en consolidant tout l'espace disponible sur le volume principal.
-
-### ✨ Avantages
-- 🎯 **Récupération complète** de l'espace disque non utilisé
-- 🧹 **Nettoyage automatique** des volumes LVM obsolètes  
-- ⚡ **Consolidation** sur un seul volume unifié
-- 🔧 **Simple** : seulement 2 commandes à exécuter
+Ce guide permet de **récupérer l'espace disque inutilisé** dans Proxmox VE en supprimant le stockage `local-lvm` et en étendant le volume `root`. Résout le problème du cloisonnement entre l'espace VMs et l'espace backups.
 
 ## 📊 Exemple concret de récupération d'espace
 
