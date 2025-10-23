@@ -86,3 +86,39 @@ lvextend -l +100%FREE /dev/pve/root && resize2fs /dev/pve/root
    ```
 
 ❌ **Ne supprimez pas d'autres sections comme `local`, qui correspond souvent au stockage principal.**
+
+---
+
+
+## 📦 Étape importante : Configurer le stockage `local`
+
+⚠️ **N'oubliez pas** de mettre à jour la configuration du stockage `local` pour qu'il puisse gérer tous les types de contenu qui étaient auparavant dans `local-lvm`.
+
+### 🔧 Configuration manuelle
+
+1. Éditez à nouveau le fichier de configuration :
+   ```bash
+   nano /etc/pve/storage.cfg
+   ```
+
+2. Modifiez la section `dir: local` pour ajouter tout le contenu qui était dans `local-lvm` :
+   ```ini
+   dir: local
+       path /var/lib/vz
+       content iso,vztmpl,backup,rootdir,images
+   ```
+
+### 🖱️ Configuration via l'interface web
+
+Vous pouvez aussi le faire via l'interface Proxmox :
+1. Allez dans **Datacenter** → **Storage**
+2. Sélectionnez le stockage **local**
+3. Cliquez sur **Edit**
+4. Dans **Content**, cochez tous les types qui étaient disponibles dans `local-lvm` :
+   - ✅ Disk image
+   - ✅ Container
+   - ✅ VZDump backup file
+   - ✅ ISO image
+   - ✅ Container template
+
+💡 **Rappel** : Le contenu typique de `local-lvm` incluait généralement `rootdir` (containers) et `images` (disques de VMs). Assurez-vous de les ajouter au stockage `local` pour pouvoir créer des VMs et containers sur ce stockage.
