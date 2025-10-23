@@ -26,9 +26,6 @@ Ce script permet de **fusionner et optimiser l'espace disque** dans Proxmox VE e
 Avant : 83 Go utilisables / 256 Go total (67% d'espace perdu)
 Après  : 248 Go utilisables / 256 Go total (97% d'espace récupéré)
 ```
-
-Très bien, voici une version **plus propre et lisible** de ton bloc, prête à être publiée sur GitHub en Markdown. J'ai aussi corrigé quelques points de forme et de style :
-
 ---
 
 # 🚀 Récupération de l'espace disque dans Proxmox
